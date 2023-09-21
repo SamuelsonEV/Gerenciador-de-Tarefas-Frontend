@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" >
+<head>
+	<link rel="icon" href="favicon.png" type="image/png">
+    <meta charset="UTF-8">
+    <title>Gerenciador de Tarefas </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<section class="tarefasapp">
+	<header class="header">
+		<h1>Gerenciador de Tarefas ✏️</h1>
+		<form id="adicionarTarefaForm">
+			<input id="tarefaTitulo" class="nova-tarefa"
+					 placeholder="Oque precisa ser feito ?"
+					 autofocus>
+		</form>
+	</header>
+	<section id="listaTarefas" class="main">
+		<input id="marcar-todas"
+				 class="marcar-todas" type="checkbox">
+		<label for="marcar-todas">
+			Marcar todas como completas
+		</label>
+		<ul id="tarefaList" class="lista-tarefas">
+			<li>
+				<div class="view">
+					<input class="toggle" type="checkbox">
+					<label>Taste JavaScript</label>
+					<button class="excluir"></button>
+				</div>
+			</li>
+		</ul>
+	</section>
+	<footer id="filtrosFooter" class="footer">
+		<span class="contador-tarefas">
+			<strong id="tarefasRestantes">0</strong>
+			itens restantes
+		</span>
+		<ul class="filtros">
+			<li>
+				<a id="filtroTodas" class="selecionado">Todas</a>
+			</li>
+			<li>
+				<a id="filtroAtivas">Ativas</a>
+			</li>
+			<li>
+				<a id="filtroCompletas">Completas</a>
+			</li>
+		</ul>
+		<button id="limparConcluidas"
+				  class="limpar-completas">
+			Limpar Completas
+		</button>
+	</footer>
+</section>
+<footer class="info">
+	<p>Reposotório: <a href="https://github.com/SamuelsonEV">Samuelson E. V.</a></p>
+	<p>MVP Pós-Graduação de Engenharia de Software PUC-RJ</p>
+</footer>
+<div id="container-toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
