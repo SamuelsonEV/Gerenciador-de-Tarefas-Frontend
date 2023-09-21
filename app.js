@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função que busca e exibe a lista de tarefas
     function buscarTarefas() {
-        fetch(`${apiUrl}/tarefas`)
+        fetch(`${apiUrl}/tarefa/todas`)
             .then(response => response.json())
             .then(data => {
                 tarefaList.innerHTML = '';
@@ -134,13 +134,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Remove todas as Concluídas
     limparConcluidas.addEventListener('click', function () {
-        fetch(`${apiUrl}/tarefas`)
+        fetch(`${apiUrl}/tarefa/todas`)
             .then(response => response.json())
             .then(data => {
                 tarefasRestantes.innerText=data.tarefas.length.toString()
                 data.tarefas.forEach(tarefa => {
                     if (tarefa.concluida === true) {
-                        fetch(`${apiUrl}/tarefa_id?id=${tarefa.id}`, {
+                        fetch(`${apiUrl}/tarefa?id=${tarefa.id}`, {
                             method: 'DELETE'
                         })
                             .then(response => {
@@ -158,13 +158,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Marca todas como concluídas ou ativas
     marcarTodas.addEventListener('click', function () {
-        fetch(`${apiUrl}/tarefas`)
+        fetch(`${apiUrl}/tarefa/todas`)
             .then(response => response.json())
             .then(data => {
                 tarefasRestantes.innerText=data.tarefas.length.toString()
                 data.tarefas.forEach(tarefa => {
                     if (tarefa.concluida === mudarTodasConcluidasPara) {
-                        fetch(`${apiUrl}/tarefa_id_concluida?id=${tarefa.id}`, {
+                        fetch(`${apiUrl}/tarefa/concluida?id=${tarefa.id}`, {
                             method: 'PUT'
                         })
                             .then(response => {
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tarefaList.addEventListener('click', function (e) {
         if (e.target.classList.contains('toggle')) {
             const tarefaId = e.target.getAttribute('data-tarefa-id');
-            fetch(`${apiUrl}/tarefa_id_concluida?id=${tarefaId}`, {
+            fetch(`${apiUrl}/tarefa/concluida?id=${tarefaId}`, {
                 method: 'PUT'
             })
             .then(response => {
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tarefaList.addEventListener('click', function (e) {
         if (e.target.classList.contains('excluir')) {
             const tarefaId = e.target.getAttribute('data-tarefa-id');
-            fetch(`${apiUrl}/tarefa_id?id=${tarefaId}`, {
+            fetch(`${apiUrl}/tarefa?id=${tarefaId}`, {
                 method: 'DELETE'
             })
             .then(response => {
